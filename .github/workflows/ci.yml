@@ -57,7 +57,8 @@ jobs:
     - name: Build
       run: cargo build --release
     - name: Run Tests
-      run: tmux new-session -d && python3 test/test_skim.py --verbose
+      run: tmux new-session -d && python3 -m pip install uv && uv run pytest
+      working-directory: e2e
       env:
         LC_ALL: en_US.UTF-8
         TERM: xterm-256color
