@@ -26,7 +26,7 @@ jobs:
     steps:
     - name: Install dependencies (for Linux)
       run: |
-        sudo apt-get install -y zsh uv
+        sudo apt-get install -y zsh uv tmux
         python3 -V
         tmux -V
         locale
@@ -57,7 +57,7 @@ jobs:
     - name: Build
       run: cargo build --release
     - name: Run Tests
-      run: tmux new-session -d && python3 -m pip install uv && uv run pytest
+      run: tmux new-session -d &&  uv run pytest
       working-directory: e2e
       env:
         LC_ALL: en_US.UTF-8
